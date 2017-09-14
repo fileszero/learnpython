@@ -1,1 +1,3 @@
 # learnpython
+
+pythonのお勉強
