@@ -1,3 +1,7 @@
 ### very common modules
 numpy
 matplotlib
+
+### for remote debug(VS Code)
+##   https://code.visualstudio.com/docs/python/debugging#_remote-debugging
+ptvsd
