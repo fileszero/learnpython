@@ -6,7 +6,8 @@ COPY mycerts.crt /usr/local/share/ca-certificates/
 RUN update-ca-certificates
 
 COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt
 
 
 # CMD [ "python", "./your-daemon-or-script.py" ]
@@ -42,6 +43,10 @@ RUN csplit -f cert- /usr/local/share/ca-certificates/mycerts.crt '/-----BEGIN CE
     && mkdir -p $HOME/.pki/nssdb && certutil -d $HOME/.pki/nssdb -N  \
     && for file in $(find . -name 'cert-*' -printf '%f\n'); do certutil -d $HOME/.pki/nssdb -A -t "C,C,C" -n "$file" -i $file ;done
 
+# install chromedriver
+RUN wget https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip \
+    && unzip chromedriver_linux64.zip \
+    && mv chromedriver /usr/local/bin/
 
 WORKDIR /usr/src/app
 ENV DISPLAY host.docker.internal:0.0
