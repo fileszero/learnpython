@@ -99,3 +99,4 @@ ENV/
 
 # mypy
 .mypy_cache/
+docker/python3/mycerts.crt
