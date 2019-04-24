@@ -71,7 +71,7 @@ def gotoUrl(driver: webdriver, url: str, wait_sec: int):
 
 base = os.path.dirname(os.path.abspath(__file__))
 config_file = os.path.normpath(os.path.join(base, "../var/config.ini"))
-
+print("config file=" + config_file)
 config.read(config_file)
 
 options = Options()

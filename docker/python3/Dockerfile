@@ -2,8 +2,9 @@ FROM python:3
 
 WORKDIR /usr/src/app
 
-COPY mycerts.crt /usr/local/share/ca-certificates/
-RUN update-ca-certificates
+COPY Dockerfile mycerts.crt* /usr/local/share/ca-certificates/
+RUN rm /usr/local/share/ca-certificates/Dockerfile \
+    && update-ca-certificates
 
 COPY requirements.txt ./
 RUN pip install --upgrade pip \
@@ -38,13 +39,15 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 WORKDIR /tmp
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
     && dpkg -i google-chrome-stable_current_amd64.deb
-RUN csplit -f cert- /usr/local/share/ca-certificates/mycerts.crt '/-----BEGIN CERTIFICATE-----/' '{*}' \
+RUN touch /usr/local/share/ca-certificates/mycerts.crt \
+    && csplit -f cert- /usr/local/share/ca-certificates/mycerts.crt '/-----BEGIN CERTIFICATE-----/' '{*}' \
     && rm /tmp/cert-00  \
     && mkdir -p $HOME/.pki/nssdb && certutil -d $HOME/.pki/nssdb -N  \
     && for file in $(find . -name 'cert-*' -printf '%f\n'); do certutil -d $HOME/.pki/nssdb -A -t "C,C,C" -n "$file" -i $file ;done
 
 # install chromedriver
-RUN wget https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip \
+# RUN wget https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip \
+RUN wget https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip \
     && unzip chromedriver_linux64.zip \
     && mv chromedriver /usr/local/bin/
 
