@@ -47,7 +47,8 @@ RUN touch /usr/local/share/ca-certificates/mycerts.crt \
 
 # install chromedriver
 # RUN wget https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip \
-RUN wget https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip \
+RUN site=https://chromedriver.storage.googleapis.com \
+    && wget $site/$(wget -q -O - $site/LATEST_RELEASE_$(google-chrome-stable --product-version | cut -d "." -f 1))/chromedriver_linux64.zip \
     && unzip chromedriver_linux64.zip \
     && mv chromedriver /usr/local/bin/
 

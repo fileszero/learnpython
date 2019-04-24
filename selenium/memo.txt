@@ -10,3 +10,10 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 dpkg -i google-chrome-stable_current_amd64.deb
 
 certutil -d sql:$HOME/.pki/nssdb -A -t "C,C,C" -n 'ZScaler' -i ZScaler
+
+wget -q -O - https://chromedriver.storage.googleapis.com/LATEST_RELEASE_74
+google-chrome-stable --product-version | cut -d "." -f 1
+
+$(wget -q -O - https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$(google-chrome-stable --product-version | cut -d "." -f 1))
+wget https://chromedriver.storage.googleapis.com/$(wget -q -O - https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$(google-chrome-stable --product-version | cut -d "." -f 1))/chromedriver_linux64.zip
+
