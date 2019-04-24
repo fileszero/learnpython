@@ -1,7 +1,6 @@
 version: '3'
 services:
   python3:
-    restart: always
     build: ./python3
     ports:
       - "3210:3210" # for remote debug
