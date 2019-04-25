@@ -5,6 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: Remote Run and Attach",
+            "type": "python",
+            "request": "attach",
+            "port": 3210,
+            "host": "localhost",
+            "preLaunchTask": "run on dokcer",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "/usr/src/app"
+                }
+            ],
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
             "name": "Python: Remote Attach",
             "type": "python",
             "request": "attach",
@@ -15,7 +30,8 @@
                     "localRoot": "${workspaceFolder}",
                     "remoteRoot": "/usr/src/app"
                 }
-            ]
-        },
+            ],
+            "internalConsoleOptions": "openOnSessionStart"
+        }
     ]
 }
