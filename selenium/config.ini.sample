@@ -1,3 +1,6 @@
+[gotoUrl]
+retry=10
+
 [https://login.microsoftonline.com]
 user = userid
 password=password
