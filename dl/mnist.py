@@ -18,6 +18,7 @@ key_file = {
 }
 
 dataset_dir = os.path.dirname(os.path.abspath(__file__))
+dataset_dir = os.path.normpath(os.path.join(dataset_dir, "../var"))
 save_file = dataset_dir + "/mnist.pkl"
 
 train_num = 60000
