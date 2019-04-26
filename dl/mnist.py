@@ -8,6 +8,7 @@ import gzip
 import pickle
 import os
 import numpy as np
+import typing
 
 url_base = 'http://yann.lecun.com/exdb/mnist/'
 key_file = {
@@ -93,7 +94,8 @@ def _change_one_hot_label(X):
     return T
 
 
-def load_mnist(normalize=True, flatten=True, one_hot_label=False):
+def load_mnist(normalize=True, flatten=True, one_hot_label=False
+              ) -> typing.Tuple[typing.Tuple[(np.ndarray, np.ndarray)], typing.Tuple[(np.ndarray, np.ndarray)]]:
     """MNISTデータセットの読み込み
 
     Parameters

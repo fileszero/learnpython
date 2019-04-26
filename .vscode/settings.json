@@ -4,5 +4,6 @@
     "python.formatting.yapfArgs": [
         "--style",
         "{based_on_style: google, column_limit: 120}"
-    ]
+    ],
+    "python.linting.mypyEnabled": true
 }

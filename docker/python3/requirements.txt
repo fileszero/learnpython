@@ -1,10 +1,7 @@
 ### very common modules
 numpy
 matplotlib
-
-### for remote debug(VS Code)
-##   https://code.visualstudio.com/docs/python/debugging#_remote-debugging
-ptvsd
+Pillow
 
 ### selenium
 selenium
@@ -12,4 +9,12 @@ selenium
 ### Open CV
 opencv-python==4.1.0.25
 
+#### DEVELOPMENT Tools
+### for remote debug(VS Code)
+##   https://code.visualstudio.com/docs/python/debugging#_remote-debugging
+ptvsd
+## static type checker
+mypy
+
 ## pip freeze > requirements.txt
+### pip install -r docker\python3\requirements.txt
