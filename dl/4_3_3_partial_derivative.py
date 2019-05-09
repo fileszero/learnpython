@@ -12,9 +12,9 @@ from mpl_toolkits.mplot3d import Axes3D
 def function_2(x: np.ndarray):
     return (x[0]**2) + (x[1]**2)
 
-
-x0 = np.arange(-3, 3, 1)
-x1 = np.arange(-3, 3, 1)
+step=0.1
+x0 = np.arange(-3, 3+step, step)
+x1 = np.arange(-3, 3 + step, step)
 print(x0)
 print(x1)
 X0, X1 = np.meshgrid(x0, x1)
