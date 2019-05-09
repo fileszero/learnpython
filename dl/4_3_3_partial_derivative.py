@@ -12,8 +12,9 @@ from mpl_toolkits.mplot3d import Axes3D
 def function_2(x: np.ndarray):
     return (x[0]**2) + (x[1]**2)
 
-step=0.1
-x0 = np.arange(-3, 3+step, step)
+
+step = 0.1
+x0 = np.arange(-3, 3 + step, step)
 x1 = np.arange(-3, 3 + step, step)
 print(x0)
 print(x1)
@@ -31,4 +32,5 @@ ax.set_ylabel("X1")
 ax.set_zlabel("f(x)")
 
 ax.plot_wireframe(X0, X1, Y)
+# ax.plot_surface(X0, X1, Y)
 plt.show()
