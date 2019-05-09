@@ -1,5 +1,6 @@
 import numpy as np
 
+# https://github.com/oreilly-japan/deep-learning-from-scratch
 
 def step_function(x: np.ndarray):
     y = x > 0
@@ -55,3 +56,26 @@ def tangent_line(f, x):
     # print(d)
     y = f(x) - d * x
     return lambda t: d * t + y
+
+
+def numerical_gradient(f, x: np.ndarray):
+    '''
+    偏微分とは、n 変数関数 f(x1, x2, …, xn) のある一つの変数 xi 以外の n-1 個の変数の値を固定することで、f を xi だけの関数とみて、この関数を xi について微分することです。
+    すべての変数の偏微分をベクトルとしてまとめたものを勾配（gradient）と言います。
+    '''
+    h = 1e-4  # 0.0001
+    grad = np.zeros_like(x)  # type: np.ndarray  # return value/ inilialize by 0
+
+    for idx in range(x.size):
+        org_val = x[idx]
+        #f(x+h)
+        x[idx] = org_val + h
+        f1 = f(x)
+        #f(x-h)
+        x[idx] = org_val - h
+        f2 = f(x)
+        grad[idx] = (f1 - f2) / (2 * h)
+
+        x[idx] = org_val
+
+    return grad
