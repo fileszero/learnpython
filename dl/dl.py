@@ -2,6 +2,7 @@ import numpy as np
 
 # https://github.com/oreilly-japan/deep-learning-from-scratch
 
+
 def step_function(x: np.ndarray):
     y = x > 0
     return y.astype(np.int)
@@ -67,6 +68,7 @@ def numerical_gradient(f, x: np.ndarray):
     grad = np.zeros_like(x)  # type: np.ndarray  # return value/ inilialize by 0
 
     for idx in range(x.size):
+        print(idx)
         org_val = x[idx]
         #f(x+h)
         x[idx] = org_val + h

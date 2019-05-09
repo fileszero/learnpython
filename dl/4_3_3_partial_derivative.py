@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+import dl
 '''
 偏微分とは、n 変数関数 f(x1, x2, …, xn) のある一つの変数 xi 以外の n-1 個の変数の値を固定することで、f を xi だけの関数とみて、この関数を xi について微分することです。
 '''
@@ -13,7 +14,7 @@ def function_2(x: np.ndarray):
     return (x[0]**2) + (x[1]**2)
 
 
-step = 0.1
+step = 1
 x0 = np.arange(-3, 3 + step, step)
 x1 = np.arange(-3, 3 + step, step)
 print(x0)
