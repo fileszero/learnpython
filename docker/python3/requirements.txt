@@ -10,6 +10,6 @@ ptvsd
 selenium
 
 ### Open CV
-opencv-python==4.1.0.25
+opencv-python==4.1.1.26
 
 ## pip freeze > requirements.txt
